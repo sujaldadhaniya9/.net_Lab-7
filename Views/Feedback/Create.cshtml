@@ -1,0 +1,40 @@
+@model Lab_7.Models.Feedback
+
+@{
+  ViewBag.Title = "New Feedback";
+}
+
+<h2>Submit Your Feedback</h2>
+
+@using (Html.BeginForm("Create", "Feedback", FormMethod.Post))
+{
+  <table>
+    <tr>
+      <td>@Html.LabelFor(model => model.SEnrollmentNumber, "Enrollment ID")</td>
+      <td>@Html.TextBoxFor(model => model.SEnrollmentNumber, new { @class = "form-control", placeholder = "e.g. 92510103034" })</td>
+    </tr>
+    <tr>
+      <td>@Html.LabelFor(model => model.SName, "Full Name")</td>
+      <td>@Html.TextBoxFor(model => model.SName, new { @class = "form-control", placeholder = "Enter your full name" })</td>
+    </tr>
+    <tr>
+      <td>@Html.LabelFor(model => model.SSubject, "Course / Subject")</td>
+      <td>@Html.TextBoxFor(model => model.SSubject, new { @class = "form-control", placeholder = "e.g. .NET Technologies" })</td>
+    </tr>
+    <tr>
+      <td>@Html.LabelFor(model => model.SRating, "Rating (1-5)")</td>
+      <td>@Html.TextBoxFor(model => model.SRating, new { @class = "form-control", type = "number", placeholder = "Rate from 1 to 5" })</td>
+    </tr>
+    <tr>
+      <td>@Html.LabelFor(model => model.SComment, "Your Remarks")</td>
+      <td>@Html.TextAreaFor(model => model.SComment, new { @class = "form-control", placeholder = "Write your remarks here..." })</td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <input type="submit" value="Send Feedback" class="btn btn-primary" />
+      </td>
+    </tr>
+  </table>
+}
+@Html.ActionLink("See All Responses", "List", "Feedback")
+@Html.ActionLink("Return To Home", "Index", "Feedback")

@@ -1,0 +1,28 @@
+@model List<Lab_7.Models.Feedback>
+
+@{
+  ViewBag.Title = "All Responses";
+}
+
+<h2>Submitted Feedback Records</h2>
+<table border="1">
+  <tr>
+    <th>Enrollment ID</th>
+    <th>Student</th>
+    <th>Course</th>
+    <th>Rating</th>
+    <th>Remarks</th>
+  </tr>
+  @foreach (var value in Model)
+  {
+    <tr>
+      <td>@value.SEnrollmentNumber</td>
+      <td>@value.SName</td>
+      <td>@value.SSubject</td>
+      <td>@value.SRating out of 5</td>
+      <td>@value.SComment</td>
+    </tr>
+  }
+</table>
+<br />
+@Html.ActionLink("Return To Home", "Index", "Feedback")
